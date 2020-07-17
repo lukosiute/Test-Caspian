@@ -10,4 +10,10 @@ namespace BillingApp.Entities
         Hot,
         Cold
     }
+
+    public enum ItemType
+    {
+        Food,
+        Drink
+    }
 }

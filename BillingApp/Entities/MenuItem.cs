@@ -9,7 +9,8 @@ namespace BillingApp.Entities
     public class MenuItem : IMenuItem
     {
         public string Name { get; set; }
-        public Temperature Type { get; set; }
+        public Temperature Temperature { get; set; }
+        public ItemType Type { get; set; }
         public double Price { get; set; }
     }
 }

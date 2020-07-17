@@ -6,6 +6,6 @@ namespace BillingApp.Interfaces
 {
     public interface IMenuItemRepository
     {
-        public Task<IEnumerable<IMenuItem>> GetAll();
+        public Task<IEnumerable<IMenuItem>> GetByName(IEnumerable<string> names);
     }
 }

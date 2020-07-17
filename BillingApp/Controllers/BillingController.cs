@@ -25,9 +25,9 @@ namespace BillingApp.Controllers
             {
                 var total = await _billingService.CalculatePrice(purchasedItems);
 
-                return new JsonResult(total.ToString());
+                return new JsonResult(total);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new JsonResult("Oooops, we couldn't get the total price");
             }

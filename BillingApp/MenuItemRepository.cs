@@ -9,24 +9,21 @@ namespace BillingApp
 {
     public class MenuItemRepository : IMenuItemRepository
     {
-        private IList<IMenuItem> _menuItems;
+        private IEnumerable<IMenuItem> _menuItems;
         public MenuItemRepository()
         {
-            if (_menuItems == null)
-            {
-                _menuItems = new List<IMenuItem>
+            _menuItems = new List<IMenuItem>
                 {
-                    new MenuItem {Name = "Cola", Type = Temperature.Cold, Price = 0.50 },
-                    new MenuItem {Name = "Coffee", Type = Temperature.Hot, Price = 1 },
-                    new MenuItem {Name = "Cheese Sandwich", Type = Temperature.Cold, Price = 2 },
-                    new MenuItem {Name = "Steak Sandwich", Type = Temperature.Hot, Price = 4.5 }
+                    new MenuItem {Name = "Cola", Temperature = Temperature.Cold, Type = ItemType.Drink, Price = 0.5 },
+                    new MenuItem {Name = "Coffee", Temperature = Temperature.Hot, Type = ItemType.Drink, Price = 1 },
+                    new MenuItem {Name = "Cheese Sandwich", Temperature = Temperature.Cold, Type = ItemType.Food, Price = 2 },
+                    new MenuItem {Name = "Steak Sandwich", Temperature = Temperature.Hot, Type = ItemType.Food, Price = 4.5 }
                 };
-            }
         }
 
-        public async Task<IEnumerable<IMenuItem>> GetAll()
+        public async Task<IEnumerable<IMenuItem>> GetByName(IEnumerable<string> names)
         {
-            return _menuItems;
+            return _menuItems.Where(x => names.Contains(x.Name)).ToList();
         }
     }
 }
